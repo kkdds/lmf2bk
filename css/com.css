@@ -1,8 +1,13 @@
 @charset "utf-8";
-html,body{ margin:0px; height:99%; font-family:"微软雅黑", "Arial Unicode MS", Calibri;background-color:#1C2B3E;}
-.left_div{width:66%; height:95%; float:left; text-align:center;padding: 20px 0 0 0;}
+html,body{ margin:0px; height:99%; 
+font-family:"微软雅黑", "Arial Unicode MS", Calibri;
+background: url(/css/bg1.jpg) no-repeat;
+background-size:cover;}
+.left_div{width:66%; height:95%; float:left; text-align:center;
+padding: 20px 0 0 0;}
 .scr_div{
-	width:90%; height:95%; display:inline-block; background-color:#000000;
+	width:90%; height:95%; display:inline-block; 
+	background-color:rgba(0,0,0,0.5);;
   -webkit-border-radius:6px;
   -moz-border-radius:6px;
   border-radius:6px;
@@ -16,7 +21,8 @@ html,body{ margin:0px; height:99%; font-family:"微软雅黑", "Arial Unicode MS
 }
 .right_div{width:33%; height:95%; float:left; text-align:center;padding: 20px 0 0 0;}
 .ctrl_div{
-	width:90%; height:95%; display:inline-block; background-color:#000000;
+	width:90%; height:95%; display:inline-block; 
+	background-color:rgba(0,0,0,0.5);
   -webkit-border-radius:6px;
   -moz-border-radius:6px;
   border-radius:6px;
@@ -25,7 +31,8 @@ html,body{ margin:0px; height:99%; font-family:"微软雅黑", "Arial Unicode MS
 }
 .item_div{
   width:30%; height:30%; 
-  float:left; text-align:center;margin:5px;background-color:#ffffff;
+  float:left; text-align:center;margin:5px;
+  background-color:#ffffff;
   padding:6px 3px;
   background-repeat: no-repeat;
   background-size:cover;
@@ -34,11 +41,8 @@ html,body{ margin:0px; height:99%; font-family:"微软雅黑", "Arial Unicode MS
   box-shadow:3px 3px 5px #555;  */
 }
 .item_div_name{
-  background-color:#ffffff;
+  background-color:rgba(255,255,255,0.5);;
   height:20%;
-  filter:alpha(opacity=60);  
-  -moz-opacity:0.6;
-  opacity: 0.6;  
   line-height:48px;
 }
 .btn_div{
