@@ -12,6 +12,8 @@
 <script type="text/JavaScript">
 var Gcaitime=5;
 var vname='01';
+var pcai='01';
+var scly=0;
 $(document).ready(function(){  
 	$('#timep').pietimer({seconds: Gcaitime},function(){timesup();})	
 
@@ -60,9 +62,11 @@ $(document).ready(function(){
 		  return false;
 	  }
 	  $(".scr_div").css("background-image","none");
-	  $(".item_div").css("display","block");	
+	  $(".item_div").css("display","block");
+	  $(".scr_div").scrollTop(scly);
 	return false;
-  });	
+  });
+
   $(".item_div").click(function(){
 	  if(running_sta==true){
 		  return false;
@@ -72,9 +76,10 @@ $(document).ready(function(){
 	  //$("#namescreen").text($(this).attr("vl0"));
 	  $('#timep').pietimer({seconds: caitime},function(){timesup();})
 	  vname=$(this).attr("vl4");
-	  var pcai=$(this).attr("bgp");
+	  pcai=$(this).attr("bgp")
 	  $(".scr_div").css("background-image","url('"+pcai+"')");
-	  $(".item_div").css("display","none");	
+	  scly=$(".scr_div").scrollTop();
+	  $(".item_div").css("display","none");
 	  return false;
   });
   $(".runscr").css("display","none");
@@ -133,11 +138,11 @@ function update_sta(){
 	}  
 }
 function playvideo(){
-	  $.post('video',{p:$('#pwd').val(),m:'play',d:vname},function(r){
+	  $.post('video',{p:$('#pwd').val(),m:'play',d:vname,i:pcai},function(r){
 	  });
 }
 function stopvideo(){
-	  $.post('video',{p:$('#pwd').val(),m:'stop'},function(r){
+	  $.post('video',{p:$('#pwd').val(),m:'stop',i:pcai},function(r){
 	  });
 }
 function pausevideo(){

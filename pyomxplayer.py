@@ -20,13 +20,27 @@ class OMXPlayer(object):
     paused = False
     subtitles_visible = True
 
-    def __init__(self, mediafile, args=None, start_playback=False):
-        if not args:
-            args = ""
-        cmd = self._LAUNCH_CMD % (mediafile, args)
+    _VOF=1
+
+    def __init__(self, mediafile):
+        cmd = self._LAUNCH_CMD % (mediafile, '')
         #print(cmd)
         self._process = pexpect.spawn(cmd)
-        
+
+        self._end_thread = Thread(target=self._get_end)
+        self._end_thread.start()
+ 
+    def _get_end(self):
+        while True:
+            index = self._process.expect([pexpect.TIMEOUT])
+            if index == 1: continue
+            else:
+                print('video end '+str(index))
+                #self.stop()
+                break
+            sleep(0.5)
+        self._VOF=0
+			
     def toggle_pause(self):
         if self._process.send(self._PAUSE_CMD):
             self.paused = not self.paused

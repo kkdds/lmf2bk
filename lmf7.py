@@ -49,10 +49,10 @@ def index(request):
         if os.path.isfile(os.path.join(root,i)):
             cainame=urllib.request.unquote(i.split(".")[0])
             dltime=i.split(".")[1]
-            videoname=i.split(".")[2]
+            videoname=i.split(".")[2]            
             caifiles.append([cainame,dltime,i,rootpath,videoname])
             
-    caifiles.sort()
+    caifiles.sort()       
     file_object=open(softPath+'setting.txt','r')    # r只读，w可写，a追加    
     shell_ud_t1_set=int(file_object.readline())
     shell_ud_t2u_set=int(file_object.readline())
@@ -79,14 +79,18 @@ def video(request):
     if po['p'] == stapwd:
         if po['m'] == 'play':        
             omx = OMXPlayer(softPath+'Videos/'+po['d']+'.mp4')
-            tbody= '{"a":"vidoe","b":"play"}'
+            tbody= '{"a":"video","b":"play"}'
+            while omx._VOF:
+                yield from asyncio.sleep(0.5)
+            qviv=QIV(softPath+'/'+po['i'])
+
         elif po['m'] == 'stop':        
             omx.stop()
-            tbody= '{"a":"vidoe","b":"stop"}'
-            qviv=QIV('/home/pi/lmf/image/039.50.05.jpg')
+            tbody= '{"a":"video","b":"stop"}'
+            qviv=QIV(softPath+'/'+po['i'])
         elif po['m'] == 'pause':        
             omx.toggle_pause()
-            tbody= '{"a":"vidoe","b":"pause"}'
+            tbody= '{"a":"video","b":"pause"}'
     else:
         tbody= '{"p":"error"}'
         
