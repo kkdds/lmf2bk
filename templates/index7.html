@@ -131,10 +131,10 @@ function update_sta(){
 		$('#onoff').prop("disabled",false);
 	}
 	if(running_sta=='0'){
-		$('.disable_when_running').prop("disabled",false);
+		//$('.disable_when_running').prop("disabled",false);
 	}
 	if(running_sta=='1'){
-		$('.disable_when_running').prop("disabled",true);
+		//$('.disable_when_running').prop("disabled",true);
 	}  
 }
 function playvideo(){
@@ -162,12 +162,10 @@ function slave_on_off(){
 	if(sta_slave){
 	  $.post('sta',{p:$('#pwd').val(),m:'gpioon',d:'fs',t:1},function(r){
 		  $('#btn_bw').val('保温 开');
-		  $('.disable_when_running').prop("disabled",true);
 	  });
 	}else{
 	  $.post('sta',{p:$('#pwd').val(),m:'gpiooff',d:'fs'},function(r){
 		  $('#btn_bw').val('保温 关');
-		  $('.disable_when_running').prop("disabled",false);
 	  });
 	}
 	sta_slave=!sta_slave;	
@@ -177,10 +175,12 @@ function shaokao_on_off(){
 	if(sta_shaokao){
 	  $.post('sta',{p:$('#pwd').val(),m:'gpioon',d:'sk',t:1},function(r){
 		  $('#btn_sk').val('烧烤 开');
+		  $('.disable_when_running').prop("disabled",true);
 	  });
 	}else{
 	  $.post('sta',{p:$('#pwd').val(),m:'gpiooff',d:'sk'},function(r){
 		  $('#btn_sk').val('烧烤 关');
+		  $('.disable_when_running').prop("disabled",false);
 	  });
 	}
 	sta_shaokao=!sta_shaokao;	
@@ -261,16 +261,16 @@ function do_save_setting(){
       <p id="timep"></p>            
     </div>
     <div class="btn_div runscr">
-        <input type="button" class="abtn disable_when_running" value="盖子 开" onClick="shell_up()">
-        <input type="button" class="abtn disable_when_running" value="盖子 合" onClick="shell_dw()">
+        <input type="button" class="abtn " value="盖子 开" onClick="shell_up()">
+        <input type="button" class="abtn " value="盖子 合" onClick="shell_dw()">
     </div>
     <div class="btn_div runscr">
         <input type="button" class="abtn disable_when_running" id="btn_bw" value="保温" onClick="slave_on_off()">
-        <input type="button" class="abtn disable_when_running" id="btn_sk" value="烧烤" onClick="shaokao_on_off()">
+        <input type="button" class="abtn " id="btn_sk" value="烧烤" onClick="shaokao_on_off()">
     </div>
     <div class="btn_div runscr">
       <div class="switch">
-        <input type="checkbox" id="onoff" onChange="doonoff()">
+        <input type="checkbox" id="onoff" onChange="doonoff()" class="disable_when_running">
         <label for="toggle"><i><div style="height:13px"></div>蒸汽</i></i></label>
         <span><div style="height:6px"></div><span id="onoffspan">开</span></span>
       </div>
