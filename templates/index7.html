@@ -119,7 +119,7 @@ function getSta(){
 		var rj=JSON.parse(r);
 		shell_sta=rj.shell_sta;
 		running_sta=rj.running_sta;
-		$("#namescreen").text(rj.tmp1);
+		$("#namescreen").text(rj.tmp1+40);
 		update_sta();
 		ws=setInterval("getSta()", 500);
 	}).error(function() { 
@@ -162,10 +162,12 @@ function slave_on_off(){
 	if(sta_slave){
 	  $.post('sta',{p:$('#pwd').val(),m:'gpioon',d:'fs',t:1},function(r){
 		  $('#btn_bw').val('保温 开');
+		  $('.disable_when_running').prop("disabled",true);
 	  });
 	}else{
 	  $.post('sta',{p:$('#pwd').val(),m:'gpiooff',d:'fs'},function(r){
 		  $('#btn_bw').val('保温 关');
+		  $('.disable_when_running').prop("disabled",false);
 	  });
 	}
 	sta_slave=!sta_slave;	
