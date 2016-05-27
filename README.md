@@ -7,7 +7,7 @@
 
 $ sudo apt-get update
 
-$ sudo apt-get install feh ttf-wqy-zenhei python3-rpi.gpio
+$ sudo apt-get install feh ttf-wqy-zenhei samba-common-bin samba python3-rpi.gpio
 
 $ sudo pip3 install pexpect aiohttp
 sudo  aiohttp_jinja2
