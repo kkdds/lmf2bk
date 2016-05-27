@@ -7,13 +7,10 @@
 
 $ sudo apt-get update
 
-$ sudo apt-get install python-rpi.gpio python3-rpi.gpio
+$ sudo apt-get install feh ttf-wqy-zenhei python3-rpi.gpio
 
-sudo pip3 install pexpect
-sudo 
-pip3 install aiohttp
-sudo 
-pip3 install aiohttp_jinja2
+$ sudo pip3 install pexpect aiohttp
+sudo  aiohttp_jinja2
 
 
 
